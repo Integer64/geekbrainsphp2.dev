@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/models/index.php';
+require __DIR__ . '/models/article.php';
 
 $articles = Article_getAllTitle();
 
