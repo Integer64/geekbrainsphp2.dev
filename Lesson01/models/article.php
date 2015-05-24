@@ -15,6 +15,5 @@ function Article_getArticle($id_article){
 
 function Article_addArticle($data){
     $sql = "INSERT INTO news (title, text, date) VALUES ('".$data['title']."', '".$data['text']."', '".$data['date']."')";
-    var_dump($sql);
     Sql_exec($sql);
 }
