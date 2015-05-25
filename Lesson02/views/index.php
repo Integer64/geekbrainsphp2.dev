@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>News feed.</h1>
-<a href="/Lesson01/add.php">Добавить новость</a>
+<a href="/Lesson02/add.php">Добавить новость</a>
 <table>
 <?php foreach($articles as $article):?>
     <tr>

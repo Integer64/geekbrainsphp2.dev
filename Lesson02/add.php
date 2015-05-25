@@ -13,7 +13,7 @@ if(!empty($_POST)){
     if(isset($data['title']) && isset($data['text']) && isset($data['date'])){
      $article = new News();
      $article->News_addNews($data);
-     header("Location: /Lesson01/");
+     header("Location: /Lesson02/");
       die;
     }
 }

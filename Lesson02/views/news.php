@@ -21,7 +21,7 @@ foreach($data_article as $data){
     <?php echo $text;?>
     </p>
 <p>
-    <a href="/Lesson01/index.php">На главную</a>
+    <a href="/Lesson02/index.php">На главную</a>
 </p>
 </body>
 </html>
