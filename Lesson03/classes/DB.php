@@ -30,6 +30,4 @@ class DB {
         return $ret;
     }
 
-
-
 } 
