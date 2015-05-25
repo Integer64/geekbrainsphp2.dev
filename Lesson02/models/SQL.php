@@ -49,7 +49,6 @@ class SQL {
     public function SQL_getEntries($table_name = '', $what = ['*'], $where = '1'){
 
         $sql = 'SELECT '.implode($what, ',').' FROM '.$table_name.' WHERE '.$where;
-        var_dump($sql);
         $result = mysql_query($sql);
 
         if($result !== false){

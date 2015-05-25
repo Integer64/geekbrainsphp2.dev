@@ -12,7 +12,7 @@
 <?php foreach($articles as $article):?>
     <tr>
     <td class="date"><?php echo strstr($article['date'], ' ', true);?></td>
-    <td class="title"><a href="<?php echo "/Lesson01/news.php?id=".$article['id']?>"><?php echo $article['title'];?></a></td>
+    <td class="title"><a href="<?php echo "/Lesson02/news.php?id=".$article['id']?>"><?php echo $article['title'];?></a></td>
     </tr>
 <?php endforeach;?>
 </table>
