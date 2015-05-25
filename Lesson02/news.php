@@ -6,6 +6,6 @@ if(!empty($_GET['id'])){
     $news = new News();
     $data_article = $news->News_getNews($id);
 }
-include __DIR__.'/views/article.php';
+include __DIR__ . '/views/news.php';
 
 

@@ -13,14 +13,6 @@ class SQL {
     }
 
     public function SQL_add($table_name = '', $insertColumnsValues = []){
-        $table_name = 'news';
-
-        $insertColumnsValues = [
-            'title' => "ArticleTitle1",
-            'text' => "ArticleText1",
-            'date' => "2000-00-00 00:00:00"
-        ];
-
         foreach($insertColumnsValues as $key => $value){
             $insertColumnsValues[$key] = "'".$value."'";
         }
@@ -56,9 +48,8 @@ class SQL {
 
     public function SQL_getEntries($table_name = '', $what = ['*'], $where = '1'){
 
-        $table_name = 'news';
-
         $sql = 'SELECT '.implode($what, ',').' FROM '.$table_name.' WHERE '.$where;
+        var_dump($sql);
         $result = mysql_query($sql);
 
         if($result !== false){
@@ -74,10 +65,3 @@ class SQL {
     }
 
 }
-
-$a = new SQL();
-$res = $a->SQL_add();
-var_dump($a);
-
-//$result = $a->SQL_getEntries();
-//var_dump($result);
