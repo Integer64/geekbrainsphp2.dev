@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/Article.php';
+require_once __DIR__.'/Article.php';
 
 class News extends Article{
     function News_getAllTitleNews(){
