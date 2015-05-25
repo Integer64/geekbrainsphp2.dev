@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css"  href="/Lesson01/css/view_index.css">
+    <link rel="stylesheet" type="text/css"  href="/Lesson02/css/view_index.css">
     <title></title>
 </head>
 <body>

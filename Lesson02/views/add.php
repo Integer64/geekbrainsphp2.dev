@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head lang="en">
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css"  href="/Lesson01/css/view_index.css">
+    <link rel="stylesheet" type="text/css"  href="/Lesson02/css/view_index.css">
     <title></title>
 </head>
 <body>
-    <a href="/Lesson01/index.php">На главную</a>
+    <a href="/Lesson02/index.php">На главную</a>
     <p></p>
-    <form action="/Lesson01/add.php" method="post">
+    <form action="/Lesson02/add.php" method="post">
         <label for="title">Название новости</label>
     <p>
     <input type="text" id="title" name="title"/>
