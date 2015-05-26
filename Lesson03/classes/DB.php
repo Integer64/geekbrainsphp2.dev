@@ -12,11 +12,11 @@ class DB {
         mysql_query('SET NAMES utf8');
     }
 
-    public function DB_exec($sql){
+    public function exec($sql){
        return mysql_query($sql);
     }
 
-    public function DB_query($sql, $class){
+    public function query($sql, $class){
         $result = mysql_query($sql);
         if($result === false){
             return $result;
