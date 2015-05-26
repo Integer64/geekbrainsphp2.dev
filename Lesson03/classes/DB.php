@@ -16,14 +16,14 @@ class DB {
        return mysql_query($sql);
     }
 
-    public function DB_query($sql){
+    public function DB_query($sql, $class){
         $result = mysql_query($sql);
         if($result === false){
             return $result;
         }
 
         $ret = [];
-        while(false !== ($row = mysql_fetch_object($result))){
+        while(false !== ($row = mysql_fetch_object($result, $class))){
             $ret[] = $row;
         }
 
