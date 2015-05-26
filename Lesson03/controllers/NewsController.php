@@ -2,14 +2,15 @@
 
 class NewsController {
     public function actionAll(){
-        $items = News::Article_getAll('news');
-        var_dump($items);
-
-    }
+        $articles = News::Article_getAll();
+        }
 
     public function actionOne(){
-        $items = News::Article_getOne('news',1);
-        var_dump($items);
+        if(!empty($_POST['id'])){
+            $id = $_POST['id'];
+            $article = News::Article_getOne($id);
+        }else{
+            header("Location: /Lesson03/");
+        }
     }
-
-} 
+}
