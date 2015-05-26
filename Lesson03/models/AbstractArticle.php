@@ -6,22 +6,17 @@ abstract class AbstractArticle {
     public $text;
     public $date;
     protected static $class;
-    private $db;
 
-
-    public function __construct(){
-        $this->db = new DB();
-    }
-
-    public function Article_getAll($tableName){
+    public static function Article_getAll($tableName){
         $sql = "SELECT * FROM ".$tableName;
-        $db = $this->db;
+        $db = new DB();
         return $db->DB_query($sql, static::$class);
     }
 
-    public function Article_getOne($tableName,$id){
+    public static function Article_getOne($tableName,$id){
         $sql = "SELECT * FROM ".$tableName." WHERE id = ".$id;
-        return $this->db->DB_query($sql, static::$class);
+        $db = new DB();
+        return $db->DB_query($sql, static::$class);
     }
 
     public function Article_add($tableName, $insertColumnsValues){
@@ -29,7 +24,8 @@ abstract class AbstractArticle {
             $insertColumnsValues[$key] = "'".$value."'";
         }
         $sql = 'INSERT INTO '.$tableName.' ('.implode(array_keys($insertColumnsValues),', ').') VALUES ('.implode($insertColumnsValues,',').')';
-        $result = $this->db->DB_exec($sql);
+        $db = new DB();
+        $result = $db->DB_exec($sql);
         return $result;
     }
 
