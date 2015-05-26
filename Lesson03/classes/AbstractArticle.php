@@ -6,24 +6,25 @@ abstract class AbstractArticle {
     public $text;
     public $date;
     protected static $class;
+    protected static $tableName;
 
-    public static function Article_getAll($tableName){
-        $sql = "SELECT * FROM ".$tableName;
+    public static function Article_getAll(){
+        $sql = "SELECT * FROM ".static::$tableName;
         $db = new DB();
         return $db->DB_query($sql, static::$class);
     }
 
-    public static function Article_getOne($tableName,$id){
-        $sql = "SELECT * FROM ".$tableName." WHERE id = ".$id;
+    public static function Article_getOne($id){
+        $sql = "SELECT * FROM ".static::$tableName." WHERE id = ".$id;
         $db = new DB();
         return $db->DB_query($sql, static::$class);
     }
 
-    public function Article_add($tableName, $insertColumnsValues){
+    public function Article_add($insertColumnsValues){
         foreach($insertColumnsValues as $key => $value){
             $insertColumnsValues[$key] = "'".$value."'";
         }
-        $sql = 'INSERT INTO '.$tableName.' ('.implode(array_keys($insertColumnsValues),', ').') VALUES ('.implode($insertColumnsValues,',').')';
+        $sql = 'INSERT INTO '.static::$tableName.' ('.implode(array_keys($insertColumnsValues),', ').') VALUES ('.implode($insertColumnsValues,',').')';
         $db = new DB();
         $result = $db->DB_exec($sql);
         return $result;
