@@ -4,16 +4,22 @@
 
 class AdminController {
 
-    public function actionAdd(){
-        if(!empty($_POST['title']) && !empty($_POST['text']) && !empty($_POST['date'])){
-            $news = new News();
-            $data = [
+    public function actionAddNews(){
+
+        if(!empty($_POST['title']) && !empty($_POST['textNews']) && !empty($_POST['date'])){
+             $data = [
                 'title' => $_POST['title'],
-                'text'  => $_POST['text'],
+                'text'  => $_POST['textNews'],
                 'date'  => $_POST['date']
             ];
-            $news->Article_add('news',$data);
+            News::add($data);
         }
         header("Location: /Lesson03/");
+
+    }
+
+    public function actionAdd(){
+        $view = new View();
+        $view->display('addNews.php');
     }
 } 
