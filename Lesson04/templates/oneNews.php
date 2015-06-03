@@ -1,5 +1,5 @@
 <?php
-foreach($this->data as $news){
+foreach($oneNews as $news){
     $title =$news->title;
     $text = $news->text;
     $date = $news->date;
