@@ -3,7 +3,7 @@
 class View {
     protected  $data=[];
 
-    public function data($name,$items){
+    public function assagin($name,$items){
         $this->data[$name] = $items;
     }
 
@@ -11,7 +11,6 @@ class View {
         foreach($this->data as $key => $value){
             $$key = $value;
         }
-
         include __DIR__.'/../templates/'.$template;
     }
 
