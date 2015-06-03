@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^([a-zA-Z]+)/([a-zA-Z]+)/?$ index.php?ctrl=$1&act=$2 [QSA,L]
+RewriteRule ^([a-zA-Z]+)/([a-zA-Z]+)/([0-9]*)$ index.php?ctrl=$1&act=$2&id=$3 [QSA,L]
