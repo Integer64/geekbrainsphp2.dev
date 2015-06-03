@@ -4,7 +4,7 @@ class NewsController {
     public function actionAll(){
         $articles = News::getAll();
         $view = new View();
-        $view->data('news', $articles);
+        $view->assagin('news', $articles);
         $view->display('allNews.php');
         }
 
@@ -13,7 +13,7 @@ class NewsController {
             $id = $_GET['id'];
             $article = News::getOne($id);
             $view = new View();
-            $view->data('oneNews', $article);
+            $view->assagin('oneNews', $article);
             $view->display('oneNews.php');
         }else{
             header("Location: /Lesson04/");
