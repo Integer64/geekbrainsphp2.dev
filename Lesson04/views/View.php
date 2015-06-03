@@ -3,8 +3,8 @@
 class View {
     protected  $data=[];
 
-    public function assagin($name,$items){
-        $this->data[$name] = $items;
+    public function __set($key, $value){
+        $this->data[$key] = $value;
     }
 
     public function display($template){
