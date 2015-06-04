@@ -14,7 +14,7 @@ class AdminController {
             ];
             News::add($data);
         }
-        header("Location: /Lesson03/");
+        header("Location: /Lesson04/");
 
     }
 
