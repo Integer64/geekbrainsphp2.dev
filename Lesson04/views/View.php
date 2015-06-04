@@ -5,7 +5,7 @@ class View
 {
     protected  $data=[];
     protected  $keys=[];
-    protected $position = 0;
+    private $position = 0;
 
     public function __set($key, $value){
         $this->data[$key] = $value;
