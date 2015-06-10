@@ -45,15 +45,15 @@ abstract class AbstractModel
     public static function findByColumn($column, $value)
     {
         $class = get_called_class();
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column .'=\''.$value.'\'';
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column .'= :value';
         $db = new DB();
         $db->setClassName($class);
-        $result = $db->query($sql);
+        $result = $db->query($sql, [':value' => $value]);
         if(!empty($result))
         {
             return $result[0];
         }
-        return $result;
+        return false;
     }
 
     public function insert()
@@ -77,14 +77,17 @@ abstract class AbstractModel
     public function update()
     {
         $setColumnsValues = [];
+        $setValues = [];
 
         foreach($this->data as $key => $value){
-            $setColumnsValues[] = $key."=". "'".$value."'";
+            $setValues[':'.$key] = $value;
+            if('id' == $key){continue;}
+            $setColumnsValues[] = $key."=:".$key;
         }
 
-        $sql = 'UPDATE ' . static::$table . ' SET ' . implode($setColumnsValues,', ') .' WHERE id=' . $this->id;
+        $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $setColumnsValues) .' WHERE id=:id';
         $db = new DB();
-        $db->exec($sql);
+        $db->exec($sql, $setValues);
     }
 
     public function delete()
