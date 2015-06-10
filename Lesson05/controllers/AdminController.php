@@ -7,14 +7,13 @@ class AdminController {
     public function actionAddNews(){
 
         if(!empty($_POST['title']) && !empty($_POST['textNews']) && !empty($_POST['date'])){
-             $data = [
-                'title' => $_POST['title'],
-                'text'  => $_POST['textNews'],
-                'date'  => $_POST['date']
-            ];
-            News::add($data);
+            $article = new NewsModel();
+            $article->title = $_POST['title'];
+            $article->text = $_POST['textNews'];
+            $article->date = $_POST['date'];
+            $article->insert();
         }
-        header("Location: /Lesson04/");
+        header("Location: /Lesson05/");
 
     }
 
