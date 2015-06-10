@@ -1,10 +1,3 @@
-<?php
-foreach($oneNews as $news){
-    $title =$news->title;
-    $text = $news->text;
-    $date = $news->date;
-}
-?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -12,15 +5,15 @@ foreach($oneNews as $news){
     <title></title>
 </head>
 <body>
-<h1><?php echo $title;?></h1>
+<h1><?php echo $oneNews->title;?></h1>
 <p>
-    <?php echo $date;?>
+    <?php echo $oneNews->date;?>
 </p>
 <p>
-    <?php echo $text;?>
+    <?php echo $oneNews->text;?>
 </p>
 <p>
-    <a href="/Lesson04/">На главную</a>
+    <a href="/Lesson05/">На главную</a>
 </p>
 </body>
 </html>

@@ -6,12 +6,12 @@
 </head>
 <body>
 <h1>News feed.</h1>
-<a href="/Lesson04/Admin/Add">Добавить новость</a>
+<a href="/Lesson05/Admin/Add">Добавить новость</a>
 <table>
 <?php foreach($news as $item):?>
     <tr>
-    <td class="date"><?php echo strstr($item->date, ' ', true);?></td>
-    <td class="title"><a href="<?php echo "/Lesson04/News/One/".$item->id?>"><?php echo $item->title;?></a></td>
+    <td class="date"><?php  echo strstr($item->date, ' ', true);?></td>
+    <td class="title"><a href="<?php echo "/Lesson05/News/One/".$item->getId()?>"><?php echo $item->title;?></a></td>
     </tr>
 <?php endforeach;?>
 </table>
