@@ -8,6 +8,9 @@ class AdminController {
 
         if(!empty($_POST['title']) && !empty($_POST['textNews']) && !empty($_POST['date'])){
             $article = new NewsModel();
+            if(empty($article)){
+                throw new E404Exception;
+            }
             $article->title = $_POST['title'];
             $article->text = $_POST['textNews'];
             $article->date = $_POST['date'];
