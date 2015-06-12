@@ -24,4 +24,12 @@ class AdminController {
         $view = new View();
         $view->display('addNews.php');
     }
+
+    public function actionLog(){
+        $fh = fopen(__DIR__.'/../../Log/PDOErrorsLog.txt', 'r');
+        $view = new View();
+        $view->file =fread($fh, filesize(__DIR__.'/../../Log/PDOErrorsLog.txt'));
+        fclose($fh);
+        $view->display('showLog.php');
+    }
 } 
