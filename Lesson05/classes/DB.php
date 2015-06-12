@@ -12,8 +12,15 @@ class DB
         $password = '123456';
         $dbName = 'news_feed';
         $dsn = 'mysql:host='.$host.';dbname='.$dbName.';charset=utf8';
-
-        $this->dbh = new PDO($dsn,$user,$password);
+        $attributes = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+        try{
+            $this->dbh = new PDO($dsn, $user, $password, $attributes);
+        }catch (PDOException $e){
+            http_response_code(403);
+            $view = new View();
+            $view->error = $e->getMessage();
+            $view->display('error403.php');
+        }
     }
 
     public function setClassName($className)
@@ -23,8 +30,18 @@ class DB
 
     public function exec($sql, $params=[])
     {
-        $sth = $this->dbh->prepare($sql);
-        $res = $sth->execute($params);
+        try{
+            $sth = $this->dbh->prepare($sql);
+            $res = $sth->execute($params);
+        }catch (PDOException $e){
+            $log = new LogException();
+            $log->writeLog($e);
+            http_response_code(403);
+            $view = new View();
+            $view->error = $e->getMessage();
+            $view->display('error403.php');
+            die;
+        }
         if($res){
             return $this->dbh->lastInsertId();
         }
@@ -33,8 +50,18 @@ class DB
 
     public function query($sql, $params=[])
     {
-        $sth = $this->dbh->prepare($sql);
-        $sth->execute($params);
+        try {
+            $sth = $this->dbh->prepare($sql);
+            $sth->execute($params);
+        } catch(PDOException $e){
+            $log = new LogException();
+            $log->writeLog($e);
+            http_response_code(403);
+            $view = new View();
+            $view->error = $e->getMessage();
+            $view->display('error403.php');
+            die;
+        }
         return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
     }
 
