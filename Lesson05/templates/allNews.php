@@ -7,6 +7,8 @@
 <body>
 <h1>News feed.</h1>
 <a href="/Lesson05/Admin/Add">Добавить новость</a>
+<br>
+<a href="/Lesson05/Admin/Log">Показать лог файл</a>
 <table>
 <?php foreach($news as $item):?>
     <tr>
