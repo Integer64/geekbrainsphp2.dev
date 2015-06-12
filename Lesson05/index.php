@@ -9,6 +9,14 @@ $act = isset($_GET['act']) ? $_GET['act'] : 'All';
 
 $cntClassName = $ctrl . 'Controller';
 
+try{
 $cnt = new $cntClassName;
 $method = 'action' . $act;
 $cnt->$method();
+}
+catch (Exception $e){
+    http_response_code(404);
+    $view = new View();
+    $view->error = $e->getMessage();
+    $view->display('error404.php');
+}
