@@ -1,6 +1,11 @@
 <?php
+namespace Application\Lesson05\controllers;
 
-class NewsController
+use Application\Lesson05\models\News as NewsModel;
+use Application\Lesson05\classes\E404Exception;
+use Application\Lesson05\views\View;
+
+class News
 {
     public function actionAll()
     {

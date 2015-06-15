@@ -1,5 +1,10 @@
 <?php
 
+namespace Application\Lesson05\classes;
+
+use \PDOException;
+use \PDO;
+
 class DB
 {
     private $dbh;
@@ -16,10 +21,7 @@ class DB
         try{
             $this->dbh = new PDO($dsn, $user, $password, $attributes);
         }catch (PDOException $e){
-            http_response_code(403);
-            $view = new View();
-            $view->error = $e->getMessage();
-            $view->display('error403.php');
+            throw $e;
         }
     }
 
@@ -34,13 +36,7 @@ class DB
             $sth = $this->dbh->prepare($sql);
             $res = $sth->execute($params);
         }catch (PDOException $e){
-            $log = new LogException();
-            $log->writeLog($e);
-            http_response_code(403);
-            $view = new View();
-            $view->error = $e->getMessage();
-            $view->display('error403.php');
-            die;
+            throw $e;
         }
         if($res){
             return $this->dbh->lastInsertId();
@@ -54,13 +50,7 @@ class DB
             $sth = $this->dbh->prepare($sql);
             $sth->execute($params);
         } catch(PDOException $e){
-            $log = new LogException();
-            $log->writeLog($e);
-            http_response_code(403);
-            $view = new View();
-            $view->error = $e->getMessage();
-            $view->display('error403.php');
-            die;
+            throw $e;
         }
         return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
     }
