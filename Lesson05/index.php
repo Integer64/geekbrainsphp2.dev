@@ -29,6 +29,7 @@ catch (PDOException $e){
     $view->display('error403.php');
     die;
 }
+
 catch (Exception $e){
     http_response_code(404);
     $view = new View();
